@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h2 class="card-title text-center text-success">Payment Successful</h2>
+                    <hr>
+                    <p class="text-center">Your payment with ID <strong>{{ payment_id }}</strong> was successful.</p>
+                    <p class="text-center">An email has been sent to you with the payment details.</p>
+                    <p class="text-center">Thank you for your purchase!</p>
+                    <div class="text-center mt-4">
+                        <a href="/" class="btn btn-primary">Go to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

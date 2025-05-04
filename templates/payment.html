@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body text-center">
+                    <h3 class="card-title mb-3">Complete Your Payment</h3>
+                    <p class="text-muted">You are about to purchase the <strong>{{ plan.name|capfirst }}</strong> plan for ₹<strong>{{ plan.price }}</strong></p>
+                    
+
+                    <button id="rzp-button1" class="btn btn-primary btn-lg w-100">Pay ₹{{ plan.price }} with Razorpay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "rzp_test_n0lhpmrEfeIhGJ", // Your Razorpay Key
+    "amount": "{{data.amount}}", // In paise
+    "currency": "INR",
+    "name": "Blog App",
+    "description": "Payment for {{ plan.name|capfirst }} Plan",
+    "image": "https://img.icons8.com/fluency/48/blog.png",
+    "order_id": "{{payment.id}}", // Optional: Order ID
+    "handler": function (response){
+        window.location.href = `payment-success?payment_id=${response.razorpay_payment_id}&id={{data.receipt}}`;
+    },
+    "prefill": {
+        "name": "Gaurav Kumar",
+        "email": "gaurav.kumar@example.com",
+        "contact": "9000090000"
+    },
+    "notes": {
+        "plan_name": "{{ plan.name }}",
+        "plan_price": "{{ plan.price }}"
+    },
+    "theme": {
+        "color": "#0d6efd"
+    }
+};
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response){
+    alert("Payment Failed: " + response.error.description);
+});
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+{% endblock content %}

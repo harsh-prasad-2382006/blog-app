@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="{% url "index" %}">BlogApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+{% endblock header %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-primary">✍️ Create a New Post</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a href="{% url 'index' %}" class="btn btn-secondary mt-2 ms-2">← Go Back</a>
+        <button type="submit" class="btn btn-success mt-2">Save Post</button>
+    </form>
+</div>
+
+{% endblock content %}

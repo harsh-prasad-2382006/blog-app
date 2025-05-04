@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="{% url "index" %}">BlogApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+{% endblock header %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- Post Card -->
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <!-- Post Title -->
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <!-- Post Content -->
+                    <p class="card-text">{{ post.content }}</p>
+
+                    <!-- Meta Info -->
+                    <div class="d-flex justify-content-between text-muted">
+                        <small>Created at: {{ post.created_at|date:"F j, Y" }}</small>
+                        <small>Updated at: {{ post.updated_at|date:"F j, Y" }}</small>
+                    </div>
+
+                    <!-- Back Button -->
+                    <div class="mt-4 text-center">
+                        <a href="{% url 'index' %}" class="btn btn-secondary">Back to Posts</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
