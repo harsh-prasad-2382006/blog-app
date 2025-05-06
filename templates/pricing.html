@@ -24,9 +24,15 @@
                             {% if plan.can_setup_schedules %}✔️{% else %}❌{% endif %} Setup Payment Schedules
                         </p>
                     </div>
+                    {% if user.is_authenticated %}
                     <a href="{% url "payment" id=plan.id %}" class="btn btn-success">
                       <i class="bi bi-credit-card-2-front-fill me-1"></i>Proceed to Pay
                   </a>
+                  {% else %}
+                  <a href="{% url "signin" %}" class="btn btn-success">
+                    <i class="bi bi-credit-card-2-front-fill me-1"></i>Proceed to Pay
+                </a>
+                  {% endif %}
                 </div>
             </div>
             {% endfor %}
