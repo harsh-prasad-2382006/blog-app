@@ -26,9 +26,12 @@ SECRET_KEY = 'django-insecure-!k43jevyj0rr=6z)*_m5#qcev*=3kezmr7so7wav42z3@57d_n
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "52.66.239.49",  # If you're also using this IP directly
-    "blog-app-tx70.onrender.com",
+    "127.0.0.1",
+    "localhost",
+    "52.66.239.49",  # Your public IP (optional, only if needed)
+    "blog-app-tx70.onrender.com",  # Your Render domain (for production)
 ]
+
 
 
 

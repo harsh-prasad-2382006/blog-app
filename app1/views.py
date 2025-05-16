@@ -125,3 +125,7 @@ def payment_success(request):
         'id': id
     }
     return render(request, 'payment_success.html', context)
+
+
+def about(request):
+    return render(request,'about.html')

@@ -24,6 +24,7 @@ urlpatterns = [
     path('register/',views.register,name='register'),
     path('signin/',views.signin,name='signin'),
     path('signout/',views.signout,name='signout'),
+    path('about/',views.about,name='about'),
     path('create-post/',views.create_post,name='create-post'),
     path('edit-post/<int:id>/',views.edit_post,name='edit-post'),
     path('delete-post/<int:id>/',views.delete_post,name='delete-post'), 
